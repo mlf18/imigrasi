@@ -14,7 +14,7 @@ class PengaduanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['create','store','cek']);
+        $this->middleware('auth')->except(['create','store','cek','cari']);
     }
 
     public function index()
@@ -182,8 +182,8 @@ class PengaduanController extends Controller
         $kodeunik = $_POST['kode_unik'];
         if($kodeunik != null){
             $result = Pengaduan::where('kode_unik',$kodeunik)->first();
-            print_r($result);
-            exit;
+            // print_r($result);
+            // exit;
             return redirect('/cekpengaduan')->with('hasil',$result);
         }else{
             return redirect('/cekpengaduan')->with('error','Field Harus Diisi');
